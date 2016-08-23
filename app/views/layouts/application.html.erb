@@ -12,30 +12,65 @@
   </head>
 
   <body>
-  	<div class="navbar">
-  		<div class="navbar-left">
-  			<span class="navbar-burger navbar-span">&#x2261;</span>
-  			<h2>&#xa0;&#xa0;&#xa0;&#xa0;Calendar</h2>
-  		</div>
-  		<span class="navbar-dot navbar-span">&#x22ee;</span>
-  	</div>
-  	
-  	<div class="side-menu">
-  		
-  	</div>
-  	
-  	<div class="dot-menu">
-  		
-  	</div>
-  	
-  	<div class="shader"></div>
-  	
   	<% if notice.present? %>
 	  <p class="notice"><%= notice %></p>
 	<% end %>
 	<% if alert.present? %>
 	  <p class="alert"><%= alert %></p>
 	<% end %>
+	
+  	<div class="navbar">
+  		<div class="navbar-left">
+  			<span class="navbar-burger navbar-span">&#x2261;</span>
+  			<h2><%= link_to 'Calendar', root_path %></h2>
+  		</div>
+  		<span class="navbar-dot navbar-span">&#x22ee;</span>
+  	</div>
+  	
+  	<div class="side-menu">
+  		<br />
+  		<div class="side-menu-header">
+  			<h2 style="font-weight: 300;"><%= Date.today.strftime('%A') %></h2>
+  			<% if params[:metonic] == "1" %>
+  				<% today = Date.today.to_coligny_date(true) %>
+  			<% else %>
+  				<% today = Date.today.to_coligny_date %>
+  			<% end %>
+  			<h2><%= today.month.name + " " + today.day.to_s + ", " + today.year.to_s %></h2>
+  			<h3 style="font-weight: 300;"><%= Time.now.strftime('%l:%M %P') %></h3>
+  		</div>
+  		<br />
+  		<div class="side-menu-link-container">
+  			<% if user_signed_in? %>
+  				<div class="side-menu-link-wrapper">
+		  			<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+		  		</div>
+		  		<div class="side-menu-link-wrapper top-border">
+		  			<%= link_to 'Events', '#' %>
+		  		</div>
+		  	<% else %>
+		  		<div class="side-menu-link-wrapper">
+		  			<%= link_to 'Sign Up', new_user_registration_path %>
+		  		</div>
+		  		<div class="side-menu-link-wrapper top-border">
+		  			<%= link_to 'Sign In', new_user_session_path %>
+		  		</div>
+		  	<% end %>
+  		</div>  		
+  	</div>
+  	
+  	<div class="dot-menu">
+  		<div class="dot-menu-option">
+  			<% if params[:metonic] == "1" %>
+				<%= check_box_tag :metonic, "1", true %>
+			<% else %>
+				<%= check_box_tag :metonic %>
+			<% end %>
+			<%= label_tag :metonic, "Metonic?" %>
+  		</div> 
+  	</div>
+  	
+  	<div class="shader"></div>
   	
     <%= yield %>
     
@@ -48,7 +83,7 @@
     			if (!$('.dot-menu').is(":visible")) {
     				$('.shader').toggle();
     			}
-    			$('.side-menu').animate({width: 'toggle'});
+    			$('.side-menu').slideToggle();
     		});
     		$('.navbar-dot').click(function() {
     			if (!$('.side-menu').is(":visible")) {

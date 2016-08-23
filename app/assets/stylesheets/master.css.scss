@@ -1,3 +1,6 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+
 html, body {
   width: 100vw;
   overflow-x: hidden;
@@ -6,31 +9,41 @@ html, body {
 }
 
 .navbar {
+  font-family: 'Roboto', sans-serif;
   width: 100%;
   min-height: 50px;
   max-height: 50px;
-  background-color: #5686d6;
+  background-color: #5787d7;
   position: fixed;
   top: 0;
   z-index: 9999;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-left {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  height: auto;
+  margin: 0px;
+  margin-left: 10px;
+}
+
+.navbar-left a {
+  color: white;
+  text-decoration: none;
   margin-left: 10px;
 }
 
 .navbar h2 {
   color: white;
-  margin-top: 10px;
+  margin: 0px;
 }
 
 .navbar-span {
-  margin-top: 7px;
   font-size: 30px;
   color: white;
   cursor: pointer;
@@ -42,34 +55,83 @@ html, body {
 }
 
 .navbar-burger {
-  margin-top: -3px;
+  margin: 0px;
   font-size: 40px;
 }
 
 .side-menu {
-  width: 50%;
+  font-family: 'Roboto', sans-serif;
+  min-width: 75%;
+  max-width: 75%;
   height: 100%;
-  z-index: 9999;
+  z-index: 9997;
   position: fixed;
   top: 50px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.side-menu a {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+.side-menu-header {
+  margin-left: 5px;
+}
+
+.side-menu-header h2 {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0px;
+}
+
+.side-menu-header h3 {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0px;
+}
+
+.side-menu-link-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-link-wrapper {
+  width: 100%;
+  height: 50px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.top-border {
+  border-top: 1px solid #787878;
 }
 
 .dot-menu {
-  width: 33%;
+  width: 50%;
   height: 25%;
-  z-index: 9999;
+  z-index: 9998;
   position: fixed;
   top: 50px;
   right: 0px;
   background-color: white;
+  border-radius: 0px 0px 0px 10px;
+  border-left: 5px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
 }
 
 .shader {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
+  z-index: 9996;
   position: fixed;
   top: 0;
 }
@@ -79,7 +141,8 @@ html, body {
   height: 50px;
 }
 
-.calendar-wrapper{
+.calendar-wrapper {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -93,10 +156,16 @@ html, body {
   width: calc(100% / 7);
   height: auto;
   outline: 1px solid #f0f0f0;
+  cursor: pointer;
 }
 
-.calendar-bold {
-  outline: 2px solid black;
+.calendar-block:hover {
+  outline: 2px solid #5787d7;
+  z-index: 6;
+}
+
+.calendar-today {
+  background-color: #abc3eb;
   z-index: 5;
 }
 
@@ -123,16 +192,26 @@ html, body {
 .calendar-arrow {
   min-width: 25%;
   text-align: center;
+  margin: 0px;
+  margin-top: 3px;
+  margin-bottom: 5px;
 }
 
 .calendar-arrow a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
   color: black;
   text-decoration: none;
 }
 
 .calendar-header {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
   min-width: 50%;
   text-align: center;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .calendar-header-wrapper {
@@ -161,4 +240,25 @@ html, body {
 .calendar-error {
   width: 90%;
   color: red;
+}
+
+label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-style: bold;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+}
+
+.dot-menu-option {
+  margin-left: 5px;
+  margin-top: 5px;
 }

@@ -72,7 +72,7 @@
 			<% (1...(month.days + 1)).each do |day| %>
 				<% greg_date = Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date %>
 				<% if greg_date == Date.today %>
-					<div class="calendar-block calendar-bold">
+					<div class="calendar-block calendar-today">
 						<h1><%= day %></h1>
 						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
 					</div>	
@@ -99,13 +99,6 @@
 <% end %>
 
 <br />
-
-<% if metonic %>
-	<%= check_box_tag :metonic, "1", true %>
-<% else %>
-	<%= check_box_tag :metonic %>
-<% end %>
-<%= label_tag :metonic, "Metonic?" %> 
 
 <script type="text/javascript">
 	$(document).ready(function() { 
