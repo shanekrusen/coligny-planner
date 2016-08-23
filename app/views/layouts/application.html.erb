@@ -62,12 +62,15 @@
   	<div class="dot-menu">
   		<div class="dot-menu-option">
   			<% if params[:metonic] == "1" %>
-				<%= check_box_tag :metonic, "1", true %>
+				<span class="toggle on">&#10061;</span>
 			<% else %>
-				<%= check_box_tag :metonic %>
+				<span class="toggle off">&#10061;</span>
 			<% end %>
-			<%= label_tag :metonic, "Metonic?" %>
-  		</div> 
+			Metonic
+  		</div>
+  		<div class="dot-menu-option top-border-light">
+  			Filler
+  		</div>
   	</div>
   	
   	<div class="shader"></div>
@@ -90,6 +93,7 @@
     				$('.shader').toggle();
     			}
     			$('.dot-menu').slideToggle();
+    			$('.dot-menu').toggleClass( 'dot-menu-shadow' )
     		});
     	});
     </script>

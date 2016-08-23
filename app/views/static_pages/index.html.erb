@@ -102,15 +102,12 @@
 
 <script type="text/javascript">
 	$(document).ready(function() { 
-		
-		$("input[type='checkbox']").change(function(){
-			var item=$(this);    
-			if(item.is(":checked"))
-				{
-					location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>&metonic=1';
-				}  else {
-					location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>';
-				}  
- 		});
-	})
+		$('.toggle').click(function() {
+			<% if params[:metonic] == "1" %>
+				location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>';
+			<% else %>
+				location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>&metonic=1';
+			<% end %>
+		});
+	});
 </script>
