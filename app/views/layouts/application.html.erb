@@ -8,9 +8,28 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   </head>
 
   <body>
+  	<div class="navbar">
+  		<div class="navbar-left">
+  			<span class="navbar-burger navbar-span">&#x2261;</span>
+  			<h2>&#xa0;&#xa0;&#xa0;&#xa0;Calendar</h2>
+  		</div>
+  		<span class="navbar-dot navbar-span">&#x22ee;</span>
+  	</div>
+  	
+  	<div class="side-menu">
+  		
+  	</div>
+  	
+  	<div class="dot-menu">
+  		
+  	</div>
+  	
+  	<div class="shader"></div>
+  	
   	<% if notice.present? %>
 	  <p class="notice"><%= notice %></p>
 	<% end %>
@@ -19,5 +38,25 @@
 	<% end %>
   	
     <%= yield %>
+    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('.shader').hide();
+    		$('.side-menu').hide();
+    		$('.dot-menu').hide();
+    		$('.navbar-burger').click(function(){
+    			if (!$('.dot-menu').is(":visible")) {
+    				$('.shader').toggle();
+    			}
+    			$('.side-menu').animate({width: 'toggle'});
+    		});
+    		$('.navbar-dot').click(function() {
+    			if (!$('.side-menu').is(":visible")) {
+    				$('.shader').toggle();
+    			}
+    			$('.dot-menu').slideToggle();
+    		});
+    	});
+    </script>
   </body>
 </html>

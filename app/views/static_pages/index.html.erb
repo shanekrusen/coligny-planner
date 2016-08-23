@@ -10,6 +10,8 @@
 <% date = Coligny::ColignyYear.new(params[:year].to_i, metonic) %>
 <% month = date.months.find { |s| s.name == params[:month] } %>
 
+<div class="spacer"></div>
+
 <% if params[:year].present? && params[:month].present? %>
 	<% if !date.months.find { |s| s.name == params[:month] }.nil? %>
 		<div class="calendar-header-wrapper">
@@ -42,26 +44,26 @@
 			<% end %>
 		</div>
 		<div class="calendar-wrapper">
-			<div class="calendar-block">
-				<p>Sunday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Sun</p>
 			</div>
-			<div class="calendar-block">
-				<p>Monday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Mon</p>
 			</div>
-			<div class="calendar-block">
-				<p>Tuesday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Tue</p>
 			</div>
-			<div class="calendar-block">
-				<p>Wednesday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Wed</p>
 			</div>
-			<div class="calendar-block">
-				<p>Thursday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Thu</p>
 			</div>
-			<div class="calendar-block">
-				<p>Friday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Fri</p>
 			</div>
-			<div class="calendar-block">
-				<p>Saturday</p>
+			<div class="calendar-block week-header">
+				<p class="weekday-label">Sat</p>
 			</div>
 			<% start_day = Coligny::ColignyDate.new(params[:year].to_i, params[:month], 1, metonic).to_gregorian_date.wday %>
 			<% start_day.times do |blank| %>
@@ -81,9 +83,33 @@
 			<% end %>
 		</div>		
 	<% else %>
-	
+		<p>Month Not Present in Specified Year</p>
 	<% end %>		
 <% else %>
 	<% date = Date.today.to_coligny_date(true) %>
 	<%= controller.redirect_to "?year=#{date.year}&month=#{date.month.name}&metonic=1" %>
 <% end %>
+
+<br />
+
+<% if metonic %>
+	<%= check_box_tag :metonic, "1", true %>
+<% else %>
+	<%= check_box_tag :metonic %>
+<% end %>
+<%= label_tag :metonic, "Metonic?" %> 
+
+<script type="text/javascript">
+	$(document).ready(function() { 
+		
+		$("input[type='checkbox']").change(function(){
+			var item=$(this);    
+			if(item.is(":checked"))
+				{
+					location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>&metonic=1';
+				}  else {
+					location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>';
+				}  
+ 		});
+	})
+</script>
