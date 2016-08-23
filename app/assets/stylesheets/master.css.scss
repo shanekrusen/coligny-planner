@@ -1,0 +1,71 @@
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+  padding: 0px;
+  margin: 0px;;
+}
+
+.calendar-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100vw;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.calendar-block {
+  width: calc(100% / 7);
+  height: auto;
+  outline: 1px solid black;
+}
+
+.calendar-block h4 {
+  margin: 0px;
+  font-size: 75%;
+}
+
+.calendar-block p {
+  font-size: 2vw;
+}
+
+.calendar-arrow {
+  min-width: 25%;
+  text-align: center;
+}
+
+.calendar-arrow a {
+  color: black;
+  text-decoration: none;
+}
+
+.calendar-header {
+  min-width: 50%;
+  text-align: center;
+}
+
+.calendar-header-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.calendar-block h1 {
+  margin: 0px;
+  font-size: 200%;
+}
+
+.calendar-error-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-error-wrapper {
+  width: 90%;
+}
+
+.calendar-error {
+  width: 90%;
+  color: red;
+}
