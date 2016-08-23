@@ -95,6 +95,11 @@ html, body {
   outline: 1px solid #f0f0f0;
 }
 
+.calendar-bold {
+  outline: 2px solid black;
+  z-index: 5;
+}
+
 .week-header {
   outline: none;
   background-color: #f0f0f0;
