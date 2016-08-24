@@ -71,17 +71,45 @@
 			<% end %>
 			<% (1...(month.days + 1)).each do |day| %>
 				<% greg_date = Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date %>
-				<% if greg_date == Time.zone.now.to_date %>
-					<div class="calendar-block clickable-block calendar-today">
-						<h1><%= day %></h1>
-						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
-					</div>	
+				<% if user_signed_in? %>
+					<% if greg_date == Time.zone.now.to_date %>
+						<% if current_user.events.where("day = ? AND month = ? AND year = ? AND metonic = ?", day.to_i, params[:month], params[:year].to_i, metonic).present? %>
+							<div class="calendar-block clickable-block calendar-today calendar-event">
+								<h1><%= day %></h1>
+								<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+							</div>
+						<% else %>
+							<div class="calendar-block clickable-block calendar-today">
+								<h1><%= day %></h1>
+								<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+							</div>
+						<% end %>
+					<% else %>
+						<% if current_user.events.where("day = ? AND month = ? AND year = ? AND metonic = ?", day.to_i, params[:month], params[:year].to_i, metonic).present? %>
+							<div class="calendar-block clickable-block calendar-event">
+								<h1><%= day %></h1>
+								<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+							</div>
+						<% else %>
+							<div class="calendar-block clickable-block">
+								<h1><%= day %></h1>
+								<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+							</div>
+						<% end %>
+					<% end %>
 				<% else %>
-					<div class="calendar-block clickable-block ">
-						<h1><%= day %></h1>
-						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
-					</div>
-				<% end %>		
+					<% if greg_date == Time.zone.now.to_date %>
+						<div class="calendar-block clickable-block calendar-today">
+							<h1><%= day %></h1>
+							<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+						</div>
+					<% else %>
+						<div class="calendar-block clickable-block">
+							<h1><%= day %></h1>
+							<h4><%= greg_date.strftime('%d %b %Y') %></h4>
+						</div>	
+					<% end %>	
+				<% end %>
 			<% end %>
 			<% (42 - (month.days + start_day)).times do |blank| %>
 				<div class="calendar-block">

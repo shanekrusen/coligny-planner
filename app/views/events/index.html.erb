@@ -7,7 +7,9 @@
 	<% @events.each do |event| %>
 		<div class="event-wrapper">
 			<h3><%= event.name %></h3><br />
-			<h4><%= "At " + event.location %></h4><br />
+			<% if !event.location.nil? %>
+				<h4><%= "At " + event.location %></h4><br />
+			<% end %>
 			<h4><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
 		</div>
 		<br />
