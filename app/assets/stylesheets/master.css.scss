@@ -272,19 +272,19 @@ label {
 }
 
 .on {
-  -moz-transform: scale(1.5, 1.5) rotate(160deg);
-  -webkit-transform: scale(1.5, 1.5) rotate(160deg);
-  -o-transform: scale(1.5, 1.5) rotate(160deg);
-  -ms-transform: scale(1.5, 1.5) rotate(160deg);
-  transform: scale(1.5, 1.5) rotate(160deg);
+  -moz-transform: scale(-1.5, 1.5);
+  -webkit-transform: scale(-1.5, 1.5);
+  -o-transform: scale(-1.5, 1.5);
+  -ms-transform: scale(-1.5, 1.5);
+  transform: scale(-1.5, 1.5);
   color: green;
 }
 
 .off {
-  -moz-transform: scale(-1.5, 1.5) rotate(160deg);
-  -webkit-transform: scale(-1.5, 1.5) rotate(160deg);
-  -o-transform: scale(-1.5, 1.5) rotate(160deg);
-  -ms-transform: scale(-1.5, 1.5) rotate(160deg);
-  transform: scale(-1.5, 1.5) rotate(160deg);
+  -moz-transform: scale(1.5, 1.5);
+  -webkit-transform: scale(1.5, 1.5);
+  -o-transform: scale(1.5, 1.5);
+  -ms-transform: scale(1.5, 1.5);
+  transform: scale(1.5, 1.5);
   color: #2c2c2c;
 }
