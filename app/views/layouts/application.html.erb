@@ -32,7 +32,7 @@
   	<div class="side-menu">
   		<br />
   		<div class="side-menu-header">
-  			<h2 style="font-weight: 300;"><%= Date.today.strftime('%A') %></h2>
+  			<h2 style="font-weight: 300;"><%= Time.zone.now.to_date.strftime('%A') %></h2>
   			<% if params[:metonic] == "1" %>
   				<% today = Time.zone.now.to_date.to_coligny_date(true) %>
   			<% else %>
