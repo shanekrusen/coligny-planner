@@ -97,6 +97,10 @@
     			$('.dot-menu').slideToggle();
     			$('.dot-menu').toggleClass( 'dot-menu-shadow' )
     		});
+    		
+    		$(".notice, .alert").click(function() {
+    			$(event.target).slideToggle();
+    		});
     	});
     </script>
   </body>

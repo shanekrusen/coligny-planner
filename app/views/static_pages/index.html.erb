@@ -72,12 +72,12 @@
 			<% (1...(month.days + 1)).each do |day| %>
 				<% greg_date = Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date %>
 				<% if greg_date == Time.zone.now.to_date %>
-					<div class="calendar-block calendar-today">
+					<div class="calendar-block clickable-block calendar-today">
 						<h1><%= day %></h1>
 						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
 					</div>	
 				<% else %>
-					<div class="calendar-block">
+					<div class="calendar-block clickable-block ">
 						<h1><%= day %></h1>
 						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
 					</div>
@@ -101,13 +101,26 @@
 <br />
 
 <script type="text/javascript">
-	$(document).ready(function() { 
+	$(document).ready(function() {
+		String.prototype.supplant = function (o) {
+		    return this.replace(/{([^{}]*)}/g,
+		        function (a, b) {
+		            var r = o[b];
+		            return typeof r === 'string' || typeof r === 'number' ? r : a;
+		        }
+		    );
+		}; 
+		
 		$('.toggle').click(function() {
 			<% if params[:metonic] == "1" %>
 				location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>';
 			<% else %>
 				location.href = '/?year=<%= params[:year] %>&month=<%= params[:month] %>&metonic=1';
 			<% end %>
+		});
+	
+		$('.clickable-block ').click(function() {
+			location.href = '/events?year=<%= params[:year] %>&month=<%= params[:month] %>&day={day}&metonic=<%= params[:metonic] %>'.supplant({ day: $(this).children("h1").text() })
 		});
 	});
 </script>

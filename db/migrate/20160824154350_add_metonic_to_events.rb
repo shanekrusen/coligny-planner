@@ -1,0 +1,5 @@
+class AddMetonicToEvents < ActiveRecord::Migration[5.0]
+  def change
+    add_column :events, :metonic, :boolean
+  end
+end

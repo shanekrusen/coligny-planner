@@ -1,0 +1,31 @@
+<div class="spacer"></div>
+
+<div class="form-wrapper">
+	<h2 class="form-header"><%= params[:day] + " " + params[:month] + " " + params[:year] %></h2>
+
+	<%= form_for @event do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :day, :value => params[:day].to_i %>
+		<%= f.hidden_field :month, :value => params[:month] %>
+		<%= f.hidden_field :year, :value => params[:year] %>
+		<% if params[:metonic] == "1" %>
+			<%= f.hidden_field :metonic, :value => true %>
+		<% else %>
+			<%= f.hidden_field :metonic, :value => false %>
+		<% end %>
+		
+		<%= f.label :name %><br />
+		<%= f.text_field :name %><br />
+		<br />
+		<%= f.label :location %><br />
+		<%= f.text_field :location %><br />
+		<br />
+		<%= f.label :start_time %><br />
+		<%= f.time_field :start_time %><br />
+		<br />
+		<%= f.label :end_time %><br />
+		<%= f.time_field :end_time %><br />
+		<br />
+		<%= f.submit "Create Event" %>
+	<% end %>
+</div>

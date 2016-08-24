@@ -1,0 +1,14 @@
+<div class="spacer"></div>
+
+<div class="event-container">
+	<h2><%= params[:day] + " " + params[:month] + " " + params[:year] %></h2>
+	<br />
+	<% @events.each do |event| %>
+		<div class="event-wrapper">
+			<h3><%= event.name %></h3><br />
+			<h4><%= "At " + event.location %></h4><br />
+			<h4><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
+		</div>
+		<br />
+	<% end %>
+</div>
