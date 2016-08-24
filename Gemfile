@@ -52,7 +52,3 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 
 gem 'coligny'
-
-gem "font-awesome-rails"
-
-gem 'browser-timezone-rails'
