@@ -39,7 +39,7 @@
   				<% today = Date.today.to_coligny_date %>
   			<% end %>
   			<h2><%= today.month.name + " " + today.day.to_s + ", " + today.year.to_s %></h2>
-  			<h3 style="font-weight: 300;"><%= Time.now.strftime('%l:%M %P') %></h3>
+  			<h3 style="font-weight: 300;"><%= Time.zone.now.strftime('%l:%M %P') %></h3>
   		</div>
   		<br />
   		<div class="side-menu-link-container">
