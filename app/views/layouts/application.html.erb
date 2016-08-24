@@ -10,7 +10,7 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   	<meta name="HandheldFriendly" content="true" />
-	<meta name="theme-color" content="#5787d" />
+	<meta name="theme-color" content="#5787d7" />
   </head>
 
   <body>
@@ -34,9 +34,9 @@
   		<div class="side-menu-header">
   			<h2 style="font-weight: 300;"><%= Date.today.strftime('%A') %></h2>
   			<% if params[:metonic] == "1" %>
-  				<% today = Date.today.to_coligny_date(true) %>
+  				<% today = Time.zone.now.to_date.to_coligny_date(true) %>
   			<% else %>
-  				<% today = Date.today.to_coligny_date %>
+  				<% today = Time.zone.now.to_date.to_coligny_date %>
   			<% end %>
   			<h2><%= today.month.name + " " + today.day.to_s + ", " + today.year.to_s %></h2>
   			<h3 style="font-weight: 300;"><%= Time.zone.now.strftime('%l:%M %P') %></h3>

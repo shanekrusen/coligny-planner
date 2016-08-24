@@ -71,7 +71,7 @@
 			<% end %>
 			<% (1...(month.days + 1)).each do |day| %>
 				<% greg_date = Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date %>
-				<% if greg_date == Date.today %>
+				<% if greg_date == Time.zone.now.to_date %>
 					<div class="calendar-block calendar-today">
 						<h1><%= day %></h1>
 						<h4><%= greg_date.strftime('%d %b %Y') %></h4>
