@@ -2,15 +2,15 @@
 
 <div class="event-container">
 	<h2><%= params[:day] + " " + params[:month] + " " + params[:year] %></h2>
-	<h3 class="event-link">New Event</h3>
+	<h4 class="event-link">New Event</h4>
 	<br />
 	<% @events.each do |event| %>
 		<div class="event-wrapper">
-			<h3><%= event.name %></h3><br />
+			<h3 class="event-text"><%= event.name %></h3><br />
 			<% if !event.location.nil? %>
-				<h4><%= "At " + event.location %></h4><br />
+				<h4 class="event-text"><%= "At " + event.location %></h4><br />
 			<% end %>
-			<h4><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
+			<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
 		</div>
 		<br />
 	<% end %>

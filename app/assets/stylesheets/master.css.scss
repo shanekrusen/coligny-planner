@@ -356,16 +356,9 @@ input[type="submit"]:hover {
   margin: 0px;
 }
 
-.event-wrapper h3,h4 {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  margin: 0px;
-  width: 100%;
-}
-
 .event-wrapper {
   padding-left: 10px;
-  width: 50%;
+  width: 75%;
   height: auto;
   border-left: 5px solid #5787d7;
 }
@@ -385,7 +378,7 @@ input[type="submit"]:hover {
   width: 100%;
 }
 
-.event-container h3 {
+.event-container h4 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   text-align: center;
@@ -394,6 +387,18 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
+.event-wrapper h3,h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin: 0px;
+  width: 100%;
+  text-align: left;
+}
+
 .calendar-event {
   border-top: 3px solid #5787d7;
+}
+
+.event-text {
+  text-align: left !important;
 }
