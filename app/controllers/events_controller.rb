@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   
   def create
     @event = current_user.events.create(event_params)
+    
     if @event.valid?
       redirect_to root_path
     else
