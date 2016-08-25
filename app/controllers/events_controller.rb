@@ -5,6 +5,17 @@ class EventsController < ApplicationController
     @event = Event.new
   end
   
+  def destroy
+    @event = Event.find(params[:id])
+    
+    if @event.user != current_user
+      return render text: 'Not Allowed', status: :forbidden
+    end
+    
+    @event.destroy
+    redirect_to :back
+  end
+  
   def index
     if params[:metonic] == "1"
       @metonic = true
