@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @dependent_duration_events = []
     
     @all_dependent.each do |event|
-      if (event.date..(event.date + event.duration - 1)).cover?(Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, @metonic).to_gregorian_date) && !@events.include?(event) && !@dependent_events.include?(event)
+      if (event.date..(event.date + event.duration.days - 1.days)).cover?(Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, @metonic).to_gregorian_date) && !@events.include?(event) && !@dependent_events.include?(event)
         @dependent_duration_events << event
       end
     end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     
     @all_independent.each do |event|
       @event_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day.to_i, @metonic).to_gregorian_date
-      if (@event_date..(@event_date + event.duration - 1)).cover?(Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, @metonic).to_gregorian_date) && !@events.include?(event) && !@dependent_events.include?(event) && !@dependent_duration_events.include?(event)
+      if (@event_date..(@event_date + event.duration.days - 1.days)).cover?(Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, @metonic).to_gregorian_date) && !@events.include?(event) && !@dependent_events.include?(event) && !@dependent_duration_events.include?(event)
         @independent_duration_events << event
       end
     end
