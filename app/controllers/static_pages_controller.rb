@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
     @all_independent = current_user.events.where("cycle_dependent = false")
     
     @all_dependent.each do |event|
-      (event.date..(event.date + event.duration - 1)).each do |date|
+      (event.date..(event.date + event.duration.days - 1.days)).each do |date|
         @dependent_dates << date
       end
     end
