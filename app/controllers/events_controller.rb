@@ -11,7 +11,8 @@ class EventsController < ApplicationController
     else
       @metonic = false
     end
-    @events = current_user.events.where("day = ? AND month = ? AND year = ? AND metonic = ?", params[:day].to_i, params[:month], params[:year].to_i, @metonic)
+    @events = current_user.events.where("day = ? AND month = ? AND year = ? AND cycle_dependent = false", params[:day].to_i, params[:month], params[:year].to_i)
+    @dependent_events = current_user.events.where("date = ? AND cycle_dependent = true", Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, @metonic).to_gregorian_date)
   end
   
   def create
@@ -27,6 +28,6 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(:name, :location, :day, :month, :year, :metonic, :start_time, :end_time)
+    params.require(:event).permit(:name, :location, :day, :month, :year, :metonic, :start_time, :end_time, :date, :cycle_dependent)
   end
 end

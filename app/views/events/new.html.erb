@@ -1,9 +1,16 @@
+<% if params[:metonic] == "1" %>
+	<%= metonic = true %>
+<% else %>
+	<%= metonic = false %>
+<% end %>
+
 <div class="spacer"></div>
 
 <div class="form-wrapper">
 	<h2 class="form-header"><%= params[:day] + " " + params[:month] + " " + params[:year] %></h2>
 
 	<%= form_for @event do |f| %>
+		<%= f.hidden_field :date, :value => Coligny::ColignyDate.new(params[:year].to_i, params[:month], params[:day].to_i, metonic).to_gregorian_date %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :day, :value => params[:day].to_i %>
 		<%= f.hidden_field :month, :value => params[:month] %>
@@ -25,6 +32,9 @@
 		<br />
 		<%= f.label :end_time %><br />
 		<%= f.time_field :end_time %><br />
+		<br />
+		<%= f.check_box :cycle_dependent %>
+		<%= f.label :cycle_dependent %><br />
 		<br />
 		<%= f.submit "Create Event" %>
 	<% end %>
