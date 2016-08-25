@@ -1,0 +1,33 @@
+<div class="spacer"></div>
+
+<div class="event-container">
+	<h2>Events</h2>
+	
+	<% @user.events.each do |event| %>
+		<div class="event-wrapper">
+			<h3 class="event-text"><%= event.name %></h3><br />
+			<% if !event.location.nil? %>
+				<h4 class="event-text"><%= "At " + event.location %></h4><br />
+			<% end %>
+			<% if event.cycle_dependent %>
+				<h4 class="event-text"><%= "#{event.day} #{event.month} #{event.year}" %></h4><br />
+			<% else %>
+				<h4 class="event-text"><%= "#{event.date.to_coligny_date(@metonic).day} #{event.date.to_coligny_date(@metonic).month.name} #{event.date.to_coligny_date(@metonic).year}" %></h4><br />
+			<% end %>
+			<h4 class="event-text"><%= "Lasts " + event.duration.to_s + " Days"%></h4><br />
+			<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
+		</div>
+		<br />
+	<% end %>
+</div>
+
+
+<script type="text/javascript">
+	$('.toggle').click(function() {
+		<% if params[:metonic] == "1" %>
+			location.href = '/users/<%= params[:id] %>';
+		<% else %>
+			location.href = '/users/<%= params[:id] %>/?metonic=1';
+		<% end %>
+	});
+</script>

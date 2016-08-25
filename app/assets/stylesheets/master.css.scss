@@ -385,6 +385,9 @@ input[type="submit"]:hover {
   text-align: center;
   width: 100%;
   margin-top: 0px;
+}
+
+.event-link {
   cursor: pointer;
 }
 
@@ -398,6 +401,7 @@ input[type="submit"]:hover {
 
 .calendar-event {
   border-top: 3px solid #5787d7;
+  z-index: 10;
 }
 
 .event-text {

@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
+  	<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAABDdJREFUWIW1lk9sFFUcxz/vN7M73W2XEhQpEiAppETFlBCjST1JFChWEwkHVEoMKjf14KWJ2GZBCYSYeIYY/gTUhEYO2AoxjeHAyQsrkggU0DSGIkooAzPb2Z33PGy7brsz2xXa72nee9+87/f3m/d+v6eoExvf7punElaXaNahTDtaWkFnALRwT+AGRuUMakiHxYEzJ7L36tlXzUTYsGP3KruoejBsRWioZ1ON9pWRb5SYfQNHeq8+lIGunX1pPW7tMZiPBLHqEY5AEcyXqQeNvf39H/t1G+js3tsmqngKpZ5+SOGp0FwUU9x8+nh2eEYDXe98tjY05qzA47MiXjahbxux1g8e3XUh1kBn9942JDw/6+IVJsTojspMyOTHK9sONIoqnpozcQCRhVrZ323Z8kWqykDC8nfP2j+vaYJn/bSXnRwqKF01Cc2luNP+1+g15i94kmQyFbVchWDcY+zuTRYuWhFHKUpYfOr08eywDWAXVQ9KVYk3NDXRvLKNm2cvM2/ZMua3LK3LwN3REf65O8KiNWsZu3aFvHt/OsXWYvUA76mXd+5rdvzCaFSRadryPj/fb4BvP4EX34Klz9RlgJFLcP5r2Po5zzflcfsPVVG0xkskki12IgheRVRkhfOxSx+dH0Dmf5zNJatg44cAeJN7TIMIaV0INtml2h69z7tLfBYtaQFi/2UNNANw689RDsYwQlhno0x7XEVuTYWsfmJqBFprPM/DcRyCIMCySkcnDEOSySTj4+M0NDSQz+dxHIfLd8JYiyK022hp/e8yzowwDHFdF6UUruviOA7GGIIgIJPJ4LoulmWVOTWhdatdaqnxDvL5fFV0mUyGZDJJJpMpZ8BxnPJcIpEoc2rqizRHn5AKeJ4XG90jZwCwJx4Tj8UR0ul0bHSPmgHReswWuEENA3OaAZHrNkblUDw3mxlwHIfFixdP7PB3rL7W5MSghmqZ9DwP13UJggDXdSkUClPGvu9XccIw/upVQikzZOuwOKBs8QWp6jT3HvisXrC8PG5sbAQglUpNGVdi+tyY60WKa43XlA8HFcCm7Xu+Uood00nplMOK5S11RROH4d9v4ueDqnljzKHBY707bQAlZh9GbYephdvzx7n42x+PZCASWhe0kv0AFsDVCz/daVvz0jxQHbOvFokDPxzrPQkVJVA5YZ/G/DrXytqQu6/C8ouobOD7g1nPDsM30Pr23InrW2IVN587ms1XGQA4fTw7bMRaPxcmSuJqw8Dh7PXK+aouNHh01wUxugPNxdkTJyeW7hg43Jubvhb5CL3yy7k77W1dR4qJQhLFC1FG61PWBeDAAxV2/3gkG5nVGdvVa9v6VmqxerRRb4qQrk8XTylzQqP2nzn26bVa3Jn75QRe37E/owvBphDWidCO1q1apBlKXQ2R61qTU8oMNfrh4MmT2aqncBT+BTwm6pyCrC7fAAAAAElFTkSuQmCC">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   	<meta name="HandheldFriendly" content="true" />
@@ -48,7 +48,7 @@
 		  			<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 		  		</div>
 		  		<div class="side-menu-link-wrapper top-border">
-		  			<%= link_to 'Events', '#' %>
+		  			<%= link_to 'Events', user_path(current_user, :metonic => params[:metonic]) %>
 		  		</div>
 		  	<% else %>
 		  		<div class="side-menu-link-wrapper">
