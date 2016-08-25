@@ -69,11 +69,12 @@
 			<% start_day.times do |blank| %>
 				<div class="calendar-block">-</div>
 			<% end %>
-			<% (1...(month.days + 1)).each do |day| %>
+			
+			<% (1...(month.days + 1)).each do |day| %>    
 				<% greg_date = Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date %>
 				<% if user_signed_in? %>
 					<% if greg_date == Time.zone.now.to_date %>
-						<% if current_user.events.where("date = ? AND cycle_dependent = true", Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date).present? || current_user.events.where("day = ? AND month = ? AND year = ? AND cycle_dependent = false", day.to_i, params[:month], params[:year].to_i).present? %>
+						<% if current_user.events.where("date = ? AND cycle_dependent = true", Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date).present? || current_user.events.where("day = ? AND month = ? AND year = ? AND cycle_dependent = false", day.to_i, params[:month], params[:year].to_i).present? || @dependent_dates.include?(greg_date) || @independent_dates.find { |s| (s.month.name == params[:month] && s.day == day && s.year == params[:year].to_i) }.present? %>
 							<div class="calendar-block clickable-block calendar-today calendar-event">
 								<h1><%= day %></h1>
 								<h4><%= greg_date.strftime('%d %b %Y') %></h4>
@@ -85,7 +86,7 @@
 							</div>
 						<% end %>
 					<% else %>
-						<% if current_user.events.where("date = ? AND cycle_dependent = true", Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date).present? || current_user.events.where("day = ? AND month = ? AND year = ? AND cycle_dependent = false", day.to_i, params[:month], params[:year].to_i).present? %>
+						<% if current_user.events.where("date = ? AND cycle_dependent = true", Coligny::ColignyDate.new(params[:year].to_i, params[:month], day, metonic).to_gregorian_date).present? || current_user.events.where("day = ? AND month = ? AND year = ? AND cycle_dependent = false", day.to_i, params[:month], params[:year].to_i).present? || @dependent_dates.include?(greg_date) || @independent_dates.find { |s| (s.month.name == params[:month] && s.day == day && s.year == params[:year].to_i) }.present? %>
 							<div class="calendar-block clickable-block calendar-event">
 								<h1><%= day %></h1>
 								<h4><%= greg_date.strftime('%d %b %Y') %></h4>

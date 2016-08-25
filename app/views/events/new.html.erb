@@ -33,6 +33,9 @@
 		<%= f.label :end_time %><br />
 		<%= f.time_field :end_time %><br />
 		<br />
+		<%= f.label :duration %><br />
+		<%= f.number_field :duration, value: 1 %> Days<br />
+		<br />
 		<%= f.check_box :cycle_dependent %>
 		<%= f.label :cycle_dependent %><br />
 		<br />

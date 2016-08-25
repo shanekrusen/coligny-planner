@@ -1,3 +1,9 @@
+<% if params[:metonic] == "1" %>
+	<% metonic = true %>
+<% else %>
+	<% metonic = false %>
+<% end %>
+
 <div class="spacer"></div>
 
 <div class="event-container">
@@ -24,6 +30,32 @@
 			<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
 		</div>
 		<br />
+	<% end %>
+	
+	<% if !@dependent_duration_events.nil? %>
+		<% @dependent_duration_events.each do |event| %>
+			<div class="event-wrapper">
+				<h3 class="event-text"><%= event.name %></h3><br />
+				<% if !event.location.nil? %>
+					<h4 class="event-text"><%= "At " + event.location %></h4><br />
+				<% end %>
+				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
+			</div>
+			<br />
+		<% end %>
+	<% end %>
+	
+	<% if !@independent_duration_events.nil? %>
+		<% @independent_duration_events.each do |event| %>
+			<div class="event-wrapper">
+				<h3 class="event-text"><%= event.name %></h3><br />
+				<% if !event.location.nil? %>
+					<h4 class="event-text"><%= "At " + event.location %></h4><br />
+				<% end %>
+				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') %></h4>
+			</div>
+			<br />
+		<% end %>
 	<% end %>
 </div>
 

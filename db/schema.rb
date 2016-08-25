@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825051137) do
+ActiveRecord::Schema.define(version: 20160825135724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160825051137) do
     t.boolean  "metonic"
     t.date     "date"
     t.boolean  "cycle_dependent"
+    t.integer  "duration"
     t.index ["user_id", "month", "day", "year"], name: "index_events_on_user_id_and_month_and_day_and_year", using: :btree
   end
 
