@@ -37,9 +37,8 @@
 	
 	<% if !@dependent_duration_events.nil? %>
 		<% @dependent_duration_events.each do |event| %>
-			<% @event_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day, metonic) %>
-			<% @end_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day, metonic) %>
-			<% @end_date.calc_days(event.duration - 1) %>
+			<% @event_date = event.date.to_coligny_date(metonic) %>
+			<% @end_date = (event.date + (event.duration - 1)).to_coligny_date(metonic) %>
 			<div class="event-wrapper">
 				<h3 class="event-text"><%= event.name %></h3><br />
 				<% if !event.location.nil? %>
@@ -55,8 +54,9 @@
 	
 	<% if !@independent_duration_events.nil? %>
 		<% @independent_duration_events.each do |event| %>
-			<% @event_date = event.date.to_coligny_date(metonic) %>
-			<% @end_date = (event.date + (event.duration - 1)).to_coligny_date(metonic) %>
+			<% @event_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day, metonic) %>
+			<% @end_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day, metonic) %>
+			<% @end_date.calc_days(event.duration - 1) %>
 			<div class="event-wrapper">
 				<h3 class="event-text"><%= event.name %></h3><br />
 				<% if !event.location.nil? %>
@@ -76,5 +76,13 @@
 		$('.event-link').click(function() {
 			location.href = '/events/new?year=<%= params[:year] %>&month=<%= params[:month] %>&day=<%= params[:day] %>&metonic=<%= params[:metonic] %>'
 		});
+		
+		$('.toggle').click(function() {
+		<% if params[:metonic] == "1" %>
+			location.href = '/events?year=<%= params[:year] %>&month=<%= params[:month] %>&day=<%= params[:day] %>';
+		<% else %>
+			location.href = '/events?year=<%= params[:year] %>&month=<%= params[:month] %>&day=<%= params[:day] %>&metonic=1';
+		<% end %>
+	});
 	});
 </script>
