@@ -13,17 +13,17 @@
 			<% if event.duration > 1 %>
 				<% if event.cycle_dependent %>					
 					<% @end_date = (event.date + (event.duration - 1)).to_coligny_date(@metonic) %>
-					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " #{event.date.to_coligny_date(@metonic).day} #{event.date.to_coligny_date(@metonic).month.name} #{event.date.to_coligny_date(@metonic).year} to " + event.end_time.strftime('%l:%M %P') + " #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4><br />
+					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{event.date.to_coligny_date(@metonic).day} #{event.date.to_coligny_date(@metonic).month.name} #{event.date.to_coligny_date(@metonic).year} to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4><br />
 				<% else %>
 					<% @end_date = Coligny::ColignyDate.new(event.year.to_i, event.month, event.day, @metonic) %>
 					<% @end_date.calc_days(event.duration - 1) %>
-					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " #{event.day} #{event.month} #{event.year} to " + event.end_time.strftime('%l:%M %P') + " #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4><br />
+					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{event.day} #{event.month} #{event.year} to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4><br />
 				<% end %>
 			<% else %>
 				<% if event.cycle_dependent %>
-					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') + " #{event.day} #{event.month} #{event.year}" %></h4><br />
+					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') + " on #{event.day} #{event.month} #{event.year}" %></h4><br />
 				<% else %>
-					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') + " #{event.date.to_coligny_date(@metonic).day} #{event.date.to_coligny_date(@metonic).month.name} #{event.date.to_coligny_date(@metonic).year}" %></h4><br />
+					<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " to " + event.end_time.strftime('%l:%M %P') + " on #{event.date.to_coligny_date(@metonic).day} #{event.date.to_coligny_date(@metonic).month.name} #{event.date.to_coligny_date(@metonic).year}" %></h4><br />
 				<% end %>
 			<% end %>
 			
