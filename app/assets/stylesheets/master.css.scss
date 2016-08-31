@@ -264,7 +264,8 @@ label {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
+  max-height: auto;
   padding-left: 10px;
   display: flex;
   align-items: center;

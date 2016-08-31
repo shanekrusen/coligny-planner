@@ -38,7 +38,7 @@
   			<% else %>
   				<% today = Time.zone.now.to_date.to_coligny_date %>
   			<% end %>
-  			<h2><%= today.month.name + " " + today.day.to_s + ", " + today.year.to_s %></h2>
+  			<h2><%= today.month.name + " " + today.day.to_s + ", " + today.year.to_s + " BT" %></h2>
   			<h3 style="font-weight: 300;"><%= Time.zone.now.strftime('%l:%M %P') %></h3>
   		</div>
   		<br />
@@ -71,7 +71,9 @@
 			Metonic
   		</div>
   		<div class="dot-menu-option top-border-light">
-  			Filler
+  			BT: Blédhn in Táru (Year of the Bull) <br />
+  			A reference to what Helen McKay calls "the constellation which starts the precession" <br />
+  			BT = CE + 3000
   		</div>
   	</div>
   	

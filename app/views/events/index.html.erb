@@ -7,7 +7,7 @@
 <div class="spacer"></div>
 
 <div class="event-container">
-	<h2><%= params[:day] + " " + params[:month] + " " + params[:year] %></h2>
+	<h2><%= params[:day] + " " + params[:month] + " " + params[:year] + " BT" %></h2>
 	<h4 class="event-link">New Event</h4>
 	<br />
 	<% @events.each do |event| %>
@@ -44,7 +44,7 @@
 				<% if !event.location.nil? %>
 					<h4 class="event-text"><%= "At " + event.location %></h4><br />
 				<% end %>
-				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{@event_date.day} #{@event_date.month.name} #{@event_date.year} to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4>
+				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{@event_date.day} #{@event_date.month.name} #{@event_date.year} BT to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year} BT" %></h4>
 				<br />
 				<i class="delete-link"><%= link_to 'Delete Event', event_path(event), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></i>
 			</div>
@@ -62,7 +62,7 @@
 				<% if !event.location.nil? %>
 					<h4 class="event-text"><%= "At " + event.location %></h4><br />
 				<% end %>
-				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{@event_date.day} #{@event_date.month.name} #{@event_date.year} to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year}" %></h4>
+				<h4 class="event-text"><%= "From " + event.start_time.strftime('%l:%M %P') + " on #{@event_date.day} #{@event_date.month.name} #{@event_date.year} BT to " + event.end_time.strftime('%l:%M %P') + " on #{@end_date.day} #{@end_date.month.name} #{@end_date.year} BT" %></h4>
 				<br />
 				<i class="delete-link"><%= link_to 'Delete Event', event_path(event), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %></i>
 			</div>

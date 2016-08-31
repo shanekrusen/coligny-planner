@@ -28,7 +28,7 @@
 					<h2 class="calendar-arrow"><a href="/?year=<%= year_input %>&month=<%= date.months[date.months.index(month) - 1].name %>">&#9664;</a></h2>
 				<% end %>
 			<% end %>
-			<h2 class="calendar-header"><%= params[:month] + " " + params[:year] %></h2>
+			<h2 class="calendar-header"><%= params[:month] + " " + params[:year] + " BT"%></h2>
 			<% if date.months[date.months.index(month) + 1].nil? %>
 				<% if metonic %>
 					<h2 class="calendar-arrow"><a href="/?year=<%= (params[:year].to_i + 1).to_s %>&month=<%= Coligny::ColignyYear.new((params[:year].to_i + 1), true).months[0].name %>&metonic=1">&#9654;</a></h2>
